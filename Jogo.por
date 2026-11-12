@@ -1,6 +1,7 @@
 programa
 {
 	inclua biblioteca Util
+  inclua biblioteca Texto
 
 	funcao logico verificar(cadeia palpite[], cadeia senha[]){
 	          inteiro acertos = 0
@@ -30,13 +31,13 @@ programa
 			escreva(opcoes[i], " ")
 		}
 		escreva("\nDigite quatro cores para tentar descobrir a senha!\n")
-		escreva("Para cada cor correta, você recebera um emoji preto (⚫) e para cada cor correta, mas na posição errada, você recebera um emoji branco (⚪)\n.")
+		escreva("Para cada cor correta, você recebera um emoji preto (⚫) e para cada cor correta, mas na posição errada, você recebera um emoji branco (⚪).\n")
 
 		enquanto (tentativas > 0 e nao acertou) {
 			escreva("Digite seu palpite: ")
 			cadeia palpite[4]
-			cadeia palpitetodo			
-			leia(palpitetodo)
+			cadeia palpiteTodo			
+			leia(palpiteTodo)
 			para (inteiro i = 0; i < 4; i= i + 1) {
 		    	palpite[i] = Texto.extrair_subtexto(palpiteTodo, i * 2, i * 2 + 2)
 		    }
