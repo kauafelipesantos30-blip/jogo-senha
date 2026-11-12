@@ -1,5 +1,7 @@
 programa
 {
+	inclua biblioteca Util
+
 	funcao logico verificar(cadeia palpite[], cadeia senha[]){
 	          inteiro acertos = 0
 			para (inteiro i = 0; i < 4; i = i +1){
@@ -14,7 +16,10 @@ programa
 	{
           //vermelho, roxo, verde, laranja, amarelo, azul	
 		cadeia opcoes[] = {"🔴", "🟣", "🟢", "🟠", "🟡", "🔵"}
-		cadeia senha[] = {"🟣", "🟡", "🟠", "🔴"}
+		cadeia senha[4]
+		para (inteiro i = 0; i < 4; i = i + 1) {
+     		senha[i] = opcoes[Util.sorteia(0, 5)]
+    	}
 		inteiro tentativas = 10
 		cadeia palpites[10][4]
 		logico acertou = falso
@@ -30,10 +35,11 @@ programa
 		enquanto (tentativas > 0 e nao acertou) {
 			escreva("Digite seu palpite: ")
 			cadeia palpite[4]
-			leia(palpite[0])
-			leia(palpite[1])
-			leia(palpite[2])
-			leia(palpite[3])
+			cadeia palpitetodo			
+			leia(palpitetodo)
+			para (inteiro i = 0; i < 4; i= i + 1) {
+		    	palpite[i] = Texto.extrair_subtexto(palpiteTodo, i * 2, i * 2 + 2)
+		    }
 
 			acertou = verificar(palpite, senha)
 
@@ -71,6 +77,7 @@ programa
 			   	  			se (nao usados[k] e palpites[i][j] ==senha[k]) {
 			   	  				posicao_errada = posicao_errada + 1
 			   	  				usados[k] = verdadeiro
+								pare
 			   	  			}
 			               }		   
 			   	     }
@@ -91,5 +98,13 @@ programa
 			   tentativas = tentativas - 1
 			}
 		}
-	}
+
+		se (nao acertou) {
+	   limpa()
+	   escreva("acabou as tentativas! a senha era: \n")
+	   para (inteiro i = 0; i < 4; i = i + 1) {
+	   		escreva(senha[i])
+	   }
+    }
+  }
 }
